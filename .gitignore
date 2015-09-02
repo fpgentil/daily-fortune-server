@@ -1,0 +1,8 @@
+coverage/
+.DS_Store
+log/
+.env
+dump.rdb
+tmp/
+.ruby-version
+.ruby-gemset

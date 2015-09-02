@@ -1,0 +1,26 @@
+default : &default
+  namespace: <%= ENV["SIDEKIQ_NAMESPACE"] %>
+  concurrency:  25
+  strict: false
+  pidfile: tmp/pids/sidekiq.pid
+  :logfile: <%= ENV["SIDEKIQ_LOGFILE"] %>
+  verbose: <%= ENV["SIDEKIQ_VERBOSE"] %>
+  :daemon: <%= ENV["SIDEKIQ_DAEMON"] %>
+  queues:
+    - default
+    - [notfis_sender, 10]
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+staging:
+  <<: *default
+
+qa:
+  <<: *default
+
+ci:
+  <<: *default

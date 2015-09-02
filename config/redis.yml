@@ -1,0 +1,19 @@
+default: &default
+  url: <%= ENV["REDIS_URL"] %>
+  namespace: <%= ENV["REDIS_NAMESPACE"] %>
+  password: <%= ENV["REDIS_PASSWORD"] %>
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+qa:
+  <<: *default
+
+ci:
+  <<: *default
+
+production:
+  <<: *default

@@ -1,0 +1,4 @@
+web: RACK_ENV=development bin/rake server
+mongo: mongod --journal
+redis: redis-server
+sidekiq: RACK_ENV=development bin/rake sidekiq

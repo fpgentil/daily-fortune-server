@@ -1,0 +1,20 @@
+default: &default
+  :healthcheck:
+    :sidekiq:
+      :queue_latency_param: <%= Config.sidekiq_queue_latency_param %>
+      :queue_backlog_param: <%= Config.sidekiq_queue_backlog_param %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+ci:
+  <<: *default
+
+qa:
+  <<: *default
+
+production:
+  <<: *default
