@@ -6,6 +6,16 @@ RUN apt-get update -qq && apt-get install -y build-essential
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
+# Install Nginx.
+RUN \
+  apt-get install -y nginx && \
+  rm -rf /var/lib/apt/lists/* && \
+  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
+  chown -R www-data:www-data /var/lib/nginx
+
+# Add default nginx config
+ADD nginx-sites.conf /etc/nginx/sites-enabled/default
+
 # Install App
 WORKDIR /app
 ADD Gemfile /app/Gemfile
