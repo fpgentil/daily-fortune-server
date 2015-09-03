@@ -4,5 +4,6 @@ log/
 .env
 dump.rdb
 tmp/
+log/
 .ruby-version
 .ruby-gemset
