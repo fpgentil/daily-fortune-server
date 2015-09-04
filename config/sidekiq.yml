@@ -8,7 +8,6 @@ default : &default
   :daemon: <%= ENV["SIDEKIQ_DAEMON"] %>
   queues:
     - default
-    - [notfis_sender, 10]
 
 development:
   <<: *default
