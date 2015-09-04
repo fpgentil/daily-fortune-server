@@ -2,13 +2,27 @@ module HealthCheck
   class ExternalConnection
     class << self
 
+      def check_mongo
+        begin
+          if Mongoid.default_session.command(ping: 1).present?
+            true
+          else
+            false
+          end
+        rescue Exception => e
+          false
+        end
+      end
+
       def check_redis
-        ok = false
         begin
           Sidekiq.redis do |conn|
-            ok = true if conn.ping == "PONG"
+            if conn.ping == "PONG"
+              true
+            else
+              false
+            end
           end
-          ok
         rescue
           false
         end
@@ -17,6 +31,7 @@ module HealthCheck
       def all
         {
           redis: check_redis,
+          mongo: check_mongo
         }
       end
 

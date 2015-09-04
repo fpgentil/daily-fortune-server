@@ -49,3 +49,6 @@ ci:
 
 qa:
   <<: *default
+
+production:
+  <<: *default
