@@ -12,11 +12,15 @@ describe Fortune do
   end
 
   describe '#find_by' do
-    context 'when something is not right' do
-      skip
+    context 'using a database' do
+      let(:options) { { database: 'computers' } }
+
+      it 'results a string' do
+        expect(subject.find_by(options)).to be_instance_of(String)
+      end
     end
 
-    context 'when fortune is brought' do
+    context 'using a pattern' do
       skip
     end
   end

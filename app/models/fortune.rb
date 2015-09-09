@@ -1,16 +1,23 @@
 class Fortune
-  attr_reader :fortune
+  attr_reader :fortune, :options
+
+  def initialize
+    @fortune = ""
+    @options = {}
+  end
 
   def random
-    random_fortune
+    fortune_by({})
   end
 
   def find_by(options)
-    '== pending'
+    fortune_by(options)
   end
 
   private
-  def random_fortune
-    %x['fortune']
+  def fortune_by(options)
+    params = "#{options[:database]}" if options[:database].present?
+    output = `fortune #{params}` ; result = $?.success?
+    output
   end
 end
