@@ -4,11 +4,17 @@ MAINTAINER fpgentil(cdigentil@gmail.com)
 # Prepare Container
 RUN \
   apt-get update -qq && \
-  apt-get install -y build-essential
+  apt-get install -y build-essential && \
+  apt-get install unzip
 
-# Fortune
+# Fortune with extra databases
 RUN \
   apt-get install -y fortune-mod && \
+  wget https://github.com/fpgentil/fortune-databases/archive/master.zip -O /usr/share/games/fortunes/dic.zip && \
+  unzip -j -n /usr/share/games/fortunes/dic.zip -d /usr/share/games/fortunes/ && \
+  rm /usr/share/games/fortunes/dic.zip && \
+  rm /usr/share/games/fortunes/README.md && \
+  sh /usr/share/games/fortunes/run_strfile.sh && \
   ln -s /usr/games/fortune /usr/local/bin/fortune
 
 # For Nokogiri
