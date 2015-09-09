@@ -1,12 +1,20 @@
 FROM ruby:2.2.3
 MAINTAINER fpgentil(cdigentil@gmail.com)
 
-RUN apt-get update -qq && apt-get install -y build-essential
+# Prepare Container
+RUN \
+  apt-get update -qq && \
+  apt-get install -y build-essential
 
-# for nokogiri
+# Fortune
+RUN \
+  apt-get install -y fortune-mod && \
+  ln -s /usr/games/fortune /usr/local/bin/fortune
+
+# For Nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
-# Install Nginx.
+# Install Nginx
 RUN \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
