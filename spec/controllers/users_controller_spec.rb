@@ -29,6 +29,30 @@ describe Sinatra::UsersController do
   end
 
   describe 'POST /unsubscribe' do
+    let!(:user) { User.create(email: 'cdigentil@gmail.com') }
+
+    subject { 'unsubscribe' }
+    let(:unsubscribe) { post(subject, token) }
+
+    context 'with a valid token' do
+      let(:token) { { token: user.token } }
+
+      it 'unsubscribe user' do
+        unsubscribe
+        expect(user.reload.active).to be_falsey
+        expect(last_response.status).to eq 200
+      end
+    end
+
+    context 'with an invalid token' do
+      let(:token) { { token: '123123123' } }
+
+      it 'does not do anything' do
+        unsubscribe
+        expect(last_response.body).to be_empty
+        expect(last_response.status).to eq 422
+      end
+    end
   end
 
   describe 'GET /:user_email' do

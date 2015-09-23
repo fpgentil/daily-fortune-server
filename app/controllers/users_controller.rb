@@ -14,6 +14,11 @@ module Sinatra
     end
 
     post '/unsubscribe' do
+      user = User.where(token: params[:token]).first
+      user.try(:update_attributes, {active: false})
+      status user.nil? ? 422 : 200
+      # TODO move to a JBuilderTemplate
+      body user.nil? ? '' : user.inspect
     end
 
     get '/:user_email' do
