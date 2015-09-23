@@ -7,6 +7,9 @@ class User
   field :databases, type: Array
   field :active, type: Boolean, default: true
 
+  validates :email, presence: true
+  validates :email, uniqueness: true
+
   before_create :generate_token
 
   private
