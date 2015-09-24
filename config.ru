@@ -5,5 +5,6 @@ run Rack::URLMap.new({
   '/' => Sinatra::Application,
   '/healthcheck' => Sinatra::HealthCheckController,
   '/sidekiq' => Sidekiq::Web,
-  '/fortunes' => Sinatra::FortunesController
+  '/fortunes' => Sinatra::FortunesController,
+  '/users' => Sinatra::UsersController
 })
