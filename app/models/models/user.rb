@@ -11,8 +11,17 @@ class User
   validates :email, uniqueness: true
 
   before_create :generate_token
+  after_create :schedule_email
+
+  def active?
+    active
+  end
 
   private
+  def schedule_email
+    MailWorker.perform_async(self.id.to_s)
+  end
+
   def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
