@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby '2.2.3'
 
+gem "actionmailer"
 gem 'activesupport'
 gem 'bundler'
 gem 'bunny'

@@ -2,6 +2,28 @@ GEM
   remote: https://rubygems.org/
   specs:
     abstract_type (0.0.7)
+    actionmailer (4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.3)
+      actionview (= 4.2.3)
+      activesupport (= 4.2.3)
+      rack (~> 1.6)
+      rack-test (~> 0.6.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.3)
+      activesupport (= 4.2.3)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    activejob (4.2.3)
+      activesupport (= 4.2.3)
+      globalid (>= 0.3.0)
     activemodel (4.2.3)
       activesupport (= 4.2.3)
       builder (~> 3.1)
@@ -92,6 +114,8 @@ GEM
       sexp_processor (~> 4.4)
     get_process_mem (0.2.0)
     git-version-bump (0.15.1)
+    globalid (0.3.6)
+      activesupport (>= 4.1.0)
     hashie (3.4.2)
     her (0.7.6)
       activemodel (>= 3.0.0, <= 4.3.0)
@@ -111,6 +135,10 @@ GEM
     kgio (2.9.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    loofah (2.0.3)
+      nokogiri (>= 1.5.9)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
     main (6.1.0)
       arrayfields (>= 4.7.4)
       chronic (>= 0.6.2)
@@ -186,6 +214,14 @@ GEM
     rack-request-id (0.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.7)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-html-sanitizer (1.0.2)
+      loofah (~> 2.0)
     rails_best_practices (1.15.7)
       activesupport
       code_analyzer (>= 0.4.3)
@@ -317,6 +353,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer
   activesupport
   bundler
   bunny
@@ -358,3 +395,6 @@ DEPENDENCIES
   vcr
   webmock
   will_paginate_mongoid
+
+BUNDLED WITH
+   1.10.6

@@ -25,6 +25,7 @@ set :views, Proc.new { File.join(root, "views") }
 
 # making sure to load config.rb before everything else
 require "#{File.dirname(__FILE__)}/../config/config.rb"
+Mongoid.load!("#{SINATRA_ROOT}/config/mongoid.yml")
 
 Dir["#{File.dirname(__FILE__)}/../config/**/*.rb"].each { |f| require(f) unless f =~ /unicorn/}
 Dir["#{File.dirname(__FILE__)}/../lib/**/*.rb"].each { |f| require(f) }
@@ -33,8 +34,6 @@ Dir["#{File.dirname(__FILE__)}/../app/models/concerns/**/*.rb"].each { |f| requi
 Dir["#{File.dirname(__FILE__)}/../app/enrichers/**/*.rb"].each { |f| require(f) }
 Dir["#{File.dirname(__FILE__)}/../app/services/concerns/*.rb"].each { |f| require(f) }
 Dir["#{File.dirname(__FILE__)}/../app/**/*.rb"].each { |f| require(f) }
-
-Mongoid.load!("#{SINATRA_ROOT}/config/mongoid.yml")
 
 MultiJson.use :oj
 Jbuilder.key_format camelize: :lower

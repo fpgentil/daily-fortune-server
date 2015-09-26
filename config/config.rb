@@ -15,6 +15,9 @@ module Config
   mandatory :redis_url,         string
   mandatory :redis_namespace,   string
   mandatory :sidekiq_namespace, string
+  mandatory :mailgun_domain,    string
+  mandatory :mailgun_login,     string
+  mandatory :mailgun_password,  string
 
   # Optional -- value is returned or `nil` if it wasn't present.
   optional :new_relice_license_key, string
