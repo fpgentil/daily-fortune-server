@@ -9,6 +9,12 @@ Simple application that generates a random `fortune` (see more at: https://en.wi
 * Create a Sinatra/Sidekiq skeleton
 * Deploy with AWS
 
+## Routes
+```ruby
+GET fortunes/random
+GET fortunes/database?q=<computer|art|..>
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/daily-fortune-server/fork )
